@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { fetchCurrencies } from '../redux/actions';
 
 class Header extends Component {
   state = {
@@ -9,12 +10,13 @@ class Header extends Component {
   };
 
   componentDidMount() {
-    const { currencies, expenses } = this.props;
+    const { expenses, dispatch } = this.props;
     const expenseValue = expenses.length === 0 ? 0 : 1;
     this.setState({
-      selectedCurrency: currencies[0],
+      selectedCurrency: 'BRL',
       expenseValue,
     });
+    dispatch(fetchCurrencies());
   }
 
   render() {
@@ -38,8 +40,8 @@ const mapStateToProps = (state) => ({
 
 Header.propTypes = {
   email: PropTypes.string.isRequired,
-  currencies: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   expenses: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps)(Header);

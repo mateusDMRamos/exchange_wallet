@@ -10,6 +10,12 @@ class Table extends Component {
     dispatch(actionCreator('DELETE_EXPENSE', expenseId));
   };
 
+  setUpdate = ({ target }) => {
+    const { dispatch } = this.props;
+    const editId = Number(target.classList[1]);
+    dispatch(actionCreator('SET_EDIT', editId));
+  };
+
   render() {
     const { expenses } = this.props;
     return (
@@ -48,6 +54,14 @@ class Table extends Component {
                 <td>{(Number(value) * exchange).toFixed(2)}</td>
                 <td>Real</td>
                 <td>
+                  <button
+                    className={ `edit-button ${id}` }
+                    type="button"
+                    data-testid="edit-btn"
+                    onClick={ this.setUpdate }
+                  >
+                    Editar despesa
+                  </button>
                   <button
                     className={ `delete-button ${id}` }
                     type="button"

@@ -23,3 +23,25 @@ export function fetchCurrencies() {
       }));
   };
 }
+
+export function fetchExchange(expenseInfo, currencies) {
+  return (dispatch) => {
+    // dispatch(requestMoviesStarted());
+    (fetch('https://economia.awesomeapi.com.br/json/all')
+      .then((response) => response.json())
+      .then((currenciesInfos) => {
+        // const exchange = currenciesInfos[expenseInfo.currency].ask;
+        // const newValue = Number(expenseInfo.value) * exchange;
+        const exchangeRates = {};
+        currencies.forEach((currency) => {
+          exchangeRates[currency] = currenciesInfos[currency];
+        });
+        const newExpense = {
+          ...expenseInfo,
+          // value: newValue.toFixed(2),
+          exchangeRates: currenciesInfos,
+        };
+        return dispatch(actionCreator('SAVE_EXPENSE', newExpense));
+      }));
+  };
+}

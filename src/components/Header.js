@@ -18,13 +18,13 @@ class Header extends Component {
           loading ? <p>Loading</p> : (
             <p data-testid="total-field">
               {
-                expenses.length === 0 ? 0 : expenses
+                expenses.length === 0 ? '0.00' : expenses
                   .reduce((prev, curr) => {
                     const exchangeRate = Number(curr.exchangeRates[curr.currency].ask);
                     const value = Number(curr.value) * exchangeRate;
                     const prevNumber = parseFloat(prev);
-                    const total = (value + prevNumber).toFixed(2);
-                    return (total);
+                    const total = parseFloat(value + prevNumber).toFixed(2);
+                    return total;
                   }, 0)
               }
             </p>)

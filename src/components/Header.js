@@ -10,20 +10,25 @@ class Header extends Component {
   }
 
   render() {
-    const { email, expenses } = this.props;
+    const { email, expenses, loading } = this.props;
     return (
       <header>
         <p data-testid="email-field">{email}</p>
-        <p data-testid="total-field">
-          { expenses.length === 0 ? 0 : expenses
-            .reduce((prev, curr) => {
-              const exchangeRate = Number(curr.exchangeRates[curr.currency].ask);
-              const value = Number(curr.value) * exchangeRate;
-              const prevNumber = parseFloat(prev);
-              const total = (value + prevNumber).toFixed(2);
-              return (total);
-            }, 0) }
-        </p>
+        {
+          loading ? <p>Loading</p> : (
+            <p data-testid="total-field">
+              {
+                expenses.length === 0 ? 0 : expenses
+                  .reduce((prev, curr) => {
+                    const exchangeRate = Number(curr.exchangeRates[curr.currency].ask);
+                    const value = Number(curr.value) * exchangeRate;
+                    const prevNumber = parseFloat(prev);
+                    const total = (value + prevNumber).toFixed(2);
+                    return (total);
+                  }, 0)
+              }
+            </p>)
+        }
         <p data-testid="header-currency-field">BRL</p>
       </header>
     );
@@ -34,6 +39,7 @@ const mapStateToProps = (state) => ({
   email: state.user.email,
   currencies: state.wallet.currencies,
   expenses: state.wallet.expenses,
+  loading: state.wallet.loading,
 });
 
 Header.propTypes = {
@@ -42,6 +48,7 @@ Header.propTypes = {
     id: PropTypes.number.isRequired,
   })).isRequired,
   dispatch: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps)(Header);

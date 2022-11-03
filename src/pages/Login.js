@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { actionCreator } from '../redux/actions';
+import logoTrybeWallet from '../styles/assets/logoTrybeWallet.png';
 
 class Login extends React.Component {
   state = {
@@ -38,27 +39,30 @@ class Login extends React.Component {
   render() {
     const { email, password, disable } = this.state;
     return (
-      <form>
-        <input
-          type="email"
-          name="email"
-          placeholder="E-mail de Login"
-          onChange={ this.handleChange }
-          data-testid="email-input"
-          value={ email }
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Senha"
-          onChange={ this.handleChange }
-          data-testid="password-input"
-          value={ password }
-        />
-        <button type="button" disabled={ disable } onClick={ this.loginAction }>
-          Entrar
-        </button>
-      </form>
+      <main>
+        <form className="login-form">
+          <img src={ logoTrybeWallet } alt="Logo Trybe Wallet" className="logo-img" />
+          <input
+            type="email"
+            name="email"
+            placeholder="E-mail"
+            onChange={ this.handleChange }
+            data-testid="email-input"
+            value={ email }
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Senha"
+            onChange={ this.handleChange }
+            data-testid="password-input"
+            value={ password }
+          />
+          <button type="button" disabled={ disable } onClick={ this.loginAction }>
+            Entrar
+          </button>
+        </form>
+      </main>
     );
   }
 }

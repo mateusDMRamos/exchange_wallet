@@ -1,0 +1,23 @@
+
+input, button {
+  all: unset;
+}
+
+input {
+  width: 57%;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid $blue;
+  margin-bottom: 10px;
+  padding: 0 16px;
+  color: $blue;
+}
+
+input::placeholder {
+  color: $placeholder-blue;
+}
+
+input:focus {
+  border: 2px solid $blue;
+
+}

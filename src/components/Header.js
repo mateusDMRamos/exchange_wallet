@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchCurrencies } from '../redux/actions';
+import logoTrybeWallet from '../styles/assets/logoTrybeWallet.png';
 
 class Header extends Component {
   componentDidMount() {
@@ -13,6 +14,7 @@ class Header extends Component {
     const { email, expenses, loading } = this.props;
     return (
       <header>
+        <img src={ logoTrybeWallet } alt="Logo Trybe Wallet" className="logo-img" />
         <p data-testid="email-field">{email}</p>
         {
           loading ? <p>Loading</p> : (

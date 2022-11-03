@@ -1,0 +1,42 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .login-form {
+    background-color: $white;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    width: 41%;
+    height: 356px;
+    border-radius: 10px;
+    box-shadow: -4px 9px 13px rgba(3, 107, 82, 0.3);
+  
+    img {
+      width: 51%;
+      margin-top: 59px;
+      margin-bottom: 44px;
+    }
+
+    button {
+      width: 63%;
+      height: 40px;
+      background-color: $blue;
+      border-radius: 5px;
+      text-align: center;
+      color: $white;
+      font-weight: 700;
+    }
+
+    button:disabled, button:disabled:hover {
+      background-color: $gray;
+    }
+
+    button:hover {
+      background-color: $hover-blue;
+      cursor: pointer;
+    }
+  }
+}

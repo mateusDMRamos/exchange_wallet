@@ -13,6 +13,7 @@ describe('', () => {
     Email: 'teste@teste.com',
     password: '123456',
   };
+  const totalField = 'total-field';
 
   beforeEach(() => {
     global.fetch = jest.fn(() => Promise.resolve({
@@ -106,7 +107,7 @@ describe('', () => {
     userEvent.click(loginBtn);
 
     const emailInformation = screen.getByTestId('email-field');
-    const totalValueInformation = await screen.findByTestId('total-field');
+    const totalValueInformation = await screen.findByTestId(totalField);
     const headerCurrency = screen.getByTestId('header-currency-field');
 
     expect(emailInformation).toHaveTextContent(inputValues.Email);
@@ -114,7 +115,7 @@ describe('', () => {
     expect(headerCurrency).toHaveTextContent('BRL');
   });
 
-  it('O valor do Header está atualizando quando é adicionada uma nova despesa', async () => {
+  it('O valor do Header está atualizando quando é adicionada ou excluída uma nova despesa', async () => {
     const exchangeRatesValues = mockData.USD.ask;
     const expectedValue = (10 * exchangeRatesValues).toFixed(2);
 
@@ -132,8 +133,45 @@ describe('', () => {
     expect(descInputField).toHaveTextContent('');
     expect(global.fetch).toHaveBeenCalled();
 
-    const totalValueInformation = await screen.findByTestId('total-field');
-    console.log(totalValueInformation.innerHTML);
+    const totalValueInformation = await screen.findByTestId(totalField);
     expect(totalValueInformation).toHaveTextContent(expectedValue);
+
+    const deleteBtn = screen.getByRole('button', { name: 'Excluir' });
+    userEvent.click(deleteBtn);
+    expect(totalValueInformation).toHaveTextContent('0.00');
+  });
+  it('O formulário passa para a função de editar após o botão de Editar despesa ser clicado', async () => {
+    const exchangeRatesValues = mockData.USD.ask;
+    const expectedValue = (10 * exchangeRatesValues).toFixed(2);
+    const expectedValue2 = (40 * exchangeRatesValues).toFixed(2);
+
+    renderWithRouterAndRedux(<Wallet />);
+
+    const valueInputField = screen.getByTestId('value-input');
+    const descInputField = screen.getByTestId('description-input');
+    const addBtn = screen.getByRole('button');
+
+    userEvent.type(valueInputField, '10');
+    userEvent.type(descInputField, 'descrição');
+    userEvent.click(addBtn);
+
+    const totalValueInformation = await screen.findByTestId(totalField);
+    expect(totalValueInformation).toHaveTextContent(expectedValue);
+
+    userEvent.type(valueInputField, '30');
+    userEvent.type(descInputField, 'descrição 2');
+    userEvent.click(addBtn);
+
+    const totalValueInformation2 = await screen.findByTestId(totalField);
+    expect(totalValueInformation2).toHaveTextContent(expectedValue2);
+
+    const editBtn = screen.getAllByRole('button', { name: 'Editar despesa' })[0];
+    userEvent.click(editBtn);
+
+    userEvent.type(valueInputField, '20');
+    userEvent.type(descInputField, 'descrição');
+    userEvent.click(addBtn);
+
+    expect(totalValueInformation2).toHaveTextContent('237.65');
   });
 });

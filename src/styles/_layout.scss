@@ -58,23 +58,102 @@ main {
   }
 }
 
+.wallet-header-wrap{
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  height: 482px;
+  width: 81%;
+  position: absolute;
+  // top: -97px;
+}
+
 .wallet-page {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-}
+  
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 153px;
+    padding-bottom: 47px;
 
+    .logo-img{
+      width: 250px;
+    }
+
+    .symbol-img {
+      width: 26px;
+    }
+
+    .info-wrapper {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
 
 .expense-form {
   margin: 0;
+  height: 134px;
   background-color: $expense-form-bg;
   display: flex;
   flex-flow: column wrap;
   color: $blue;
+  font-size: 14px;
+  align-content: space-around;
+  
+  input, select {
+    height: 30px;
+  }
+
+  input[type=text] {
+    width: 28%;
+  }
+
+  input[type=number] {
+    width: 15%;
+  }
+
+  #currency {
+    width: 9%;
+  }
+
+  #method {
+    width: 22%;
+  }
+
+  #tag {
+    width: 15%;
+  }
 }
 
 .expense-btn {
   background-color: $white;
+  height: 95px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    background-color: $login-green;
+    height: 40px;
+    width: 32%;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    color: $white;
+  }
+
+  button:hover {
+    background-color: $hover-green;
+    cursor: pointer;
+  }
+
 }
 
 .table-wrap {
@@ -102,5 +181,7 @@ main {
     text-align: center;
     width: 100%;
     height: 10px;
+    width: 111px;
+    font-size: 12px;
   }
 }

@@ -17,7 +17,7 @@ class Header extends Component {
     return (
       <header>
         <img src={ logoTrybeWallet } alt="Logo Trybe Wallet" className="logo-img" />
-        <div>
+        <div className="info-wrapper">
           <img src={ Moedas } alt="simbolo de moedas" className="symbol-img" />
           {
             loading ? <p>Loading</p> : (
@@ -37,7 +37,7 @@ class Header extends Component {
               </p>)
           }
         </div>
-        <div>
+        <div className="info-wrapper">
           <img src={ profile } alt="simbolo de moedas" className="symbol-img" />
           <p data-testid="email-field" id="login-email">{email}</p>
         </div>

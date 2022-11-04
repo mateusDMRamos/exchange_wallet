@@ -7,8 +7,10 @@ class Wallet extends React.Component {
   render() {
     return (
       <div className="wallet-page">
-        <Header />
-        <WalletForm />
+        <section className="wallet-header-wrap">
+          <Header />
+          <WalletForm />
+        </section>
         <Table />
       </div>
     );

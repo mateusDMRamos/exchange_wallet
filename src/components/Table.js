@@ -32,7 +32,6 @@ class Table extends Component {
             <th>Moeda de conversão</th>
             <th>Editar/Excluir</th>
           </thead>
-          <div className="separation-line" />
           <tbody>
             {expenses.map((expense) => {
               const { id,

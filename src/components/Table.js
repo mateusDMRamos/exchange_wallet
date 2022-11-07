@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { actionCreator } from '../redux/actions';
+import Edit from '../styles/assets/Edit.png';
+import Delete from '../styles/assets/Delete.png';
 
 class Table extends Component {
   deleteExpense = ({ target }) => {
@@ -61,7 +63,7 @@ class Table extends Component {
                       data-testid="edit-btn"
                       onClick={ this.setUpdate }
                     >
-                      Editar despesa
+                      <img src={ Edit } alt="edit button" className="btn-icon" />
                     </button>
                     <button
                       className={ `delete-button ${id}` }
@@ -69,7 +71,7 @@ class Table extends Component {
                       data-testid="delete-btn"
                       onClick={ this.deleteExpense }
                     >
-                      Excluir
+                      <img src={ Delete } alt="edit button" className="btn-icon" />
                     </button>
                   </td>
                 </tr>

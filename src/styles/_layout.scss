@@ -65,7 +65,9 @@ main {
   height: 482px;
   width: 81%;
   position: absolute;
-  // top: -97px;
+  top: -97px;
+  border-radius: 10px;
+  box-shadow: -4px 9px 13px $shadow-color-darker;
 }
 
 .wallet-page {
@@ -98,36 +100,77 @@ main {
 
 .expense-form {
   margin: 0;
-  height: 134px;
   background-color: $expense-form-bg;
   display: flex;
   flex-flow: column wrap;
   color: $blue;
   font-size: 14px;
   align-content: space-around;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   
+  .expense-inputs {
+      height: 134px;
+      width: 100%;
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: space-around;
+  }
+
   input, select {
     height: 30px;
+    margin: 0;
   }
 
-  input[type=text] {
-    width: 28%;
+  #description-wrapper{
+    width: 460px;
+    display: flex;
+    align-items: center;
+    input {
+      width: 57%;
+      margin-left: 5px;
+    }
   }
 
-  input[type=number] {
-    width: 15%;
+  #tag-wrapper{
+    width: 330px;
+    display: flex;
+    align-items: center;
+    select {
+      width: 47%;
+      margin-left: 5px;
+    }
   }
 
-  #currency {
-    width: 9%;
+  #value-wrapper{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    input {
+      width: 78%;
+      margin-left: 5px;
+    }
   }
 
-  #method {
-    width: 22%;
+  #method-wrapper{
+    width: 403px;
+    display: flex;
+    align-items: center;
+    select {
+      width: 56%;
+      margin-left: 5px;
+    }
   }
 
-  #tag {
-    width: 15%;
+  #currency-wrapper{
+    width: 155px;
+    display: flex;
+    align-items: center;
+    select {
+      width: 58%;
+      margin-left: 5px;
+    }
   }
 }
 
@@ -137,6 +180,8 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 
   button {
     background-color: $login-green;
@@ -180,8 +225,17 @@ main {
     border-spacing: 0 0;
     text-align: center;
     width: 100%;
-    height: 10px;
+    height: 40px;
     width: 111px;
     font-size: 12px;
+  }
+
+  tbody tr {
+    height: 40px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    color: $login-green;
+    border-bottom: 2px solid $login-green;
   }
 }

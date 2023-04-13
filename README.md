@@ -1,13 +1,25 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+# Projeto Exchange Wallets
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+## Sobre o Projeto:
+ * O projeto é um app carteira, onde a pessoa pode informar gastos e suas respectivas categorias, forma de pagamento e moeda utilizada.
+ * O projeto consome a API [AwesomeAPI](https://www.themealdb.com/) para buscar cotações das moedas utilizadas.
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+ * Este projeto foi construído utilizando React, Redux, RTL e SASS.
+ 
+ * O projeto possui apenas duas páginas, mas o redux foi utilizado para testar meus conhecimentos na tecnologia. 
+
+ *O projeto possui testes desenvolvidos em RTL para verificar o funcionamento do mesmo.
+
+## Para rodar o projeto localmente:
+ * Instale as dependências com:
+
+ ```
+  npm install
+ ```
+ 
+ * Após a instalação das dependências, basta utilizar o comando abaixo para rodar o protótipo:
+ 
+ ```
+  npm start
+ ```
+ 
